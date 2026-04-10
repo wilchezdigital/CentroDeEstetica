@@ -141,23 +141,11 @@
             <h2 class="text-4xl mb-4">💎 Valoración personalizada sin costo</h2>
             <p class="text-lg mb-8">Descubre qué necesita tu cuerpo realmente. Cupos limitados por agenda.</p>
           
-          <form id="mandalayForm"
-      action="https://docs.google.com/forms/d/e/1FAIpQLSd8AnMJ-vkyeM72q0-MSRvI1i0n9kejzV4RscgV_8ZivrZsUQ/formResponse"
-      method="POST"
-      target="hidden_iframe"
-      novalidate
-      class="space-y-4 max-w-md mx-auto mb-8">
+          <form id="mandalayForm" class="space-y-4 max-w-md mx-auto mb-8">
 
-    <!-- Campos -->
-    <input type="text" name="entry.112490138" placeholder="Nombre completo" required class="w-full px-6 py-4 rounded-full border-stone-200">
-    <input type="email" name="entry.1904351407" placeholder="Tu Email" required class="w-full px-6 py-4 rounded-full border-stone-200">
-    <input type="tel" name="entry.743259634" placeholder="Teléfono" required class="w-full px-6 py-4 rounded-full border-stone-200">
-
-    <!-- Campos ocultos clave -->
-    <input type="hidden" name="fvv" value="1">
-    <input type="hidden" name="fbzx" value="random">
-    <input type="hidden" name="pageHistory" value="0">
-    <input type="hidden" name="submit" value="Submit">
+    <input id="nombre" type="text" placeholder="Nombre completo" required class="w-full px-6 py-4 rounded-full border-stone-200">
+    <input id="email" type="email" placeholder="Tu Email" required class="w-full px-6 py-4 rounded-full border-stone-200">
+    <input id="telefono" type="tel" placeholder="Teléfono" required class="w-full px-6 py-4 rounded-full border-stone-200">
 
     <button type="submit" class="w-full bg-stone-900 text-white py-4 rounded-full font-bold hover:bg-mandalay-gold transition-colors">
         QUIERO MI VALORACIÓN
@@ -165,9 +153,6 @@
 
     <p class="text-xs text-stone-400">Serás redirigido a WhatsApp para confirmar tu cita.</p>
 </form>
-
-<iframe name="hidden_iframe" style="display:none;"></iframe>
-
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
             <a href="https://wa.me/34603157717?text=Hola%20quiero%20agendar%20mi%20valoración" class="inline-flex items-center gap-2 text-mandalay-gold font-bold">
@@ -227,13 +212,31 @@
         <p class="mt-12 text-xs text-stone-400">© 2026 Mandalay Lanzarote. Todos los derechos reservados.</p>
     </footer>
 
-  <script>
-document.getElementById("mandalayForm").addEventListener("submit", function() {
-    
-    setTimeout(function() {
-        window.location.href = "https://wa.me/34603157717?text=Hola%20quiero%20agendar%20mi%20valoración";
-    }, 800);
+<script>
+document.getElementById("mandalayForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
+    const nombre = document.getElementById("nombre").value;
+    const email = document.getElementById("email").value;
+    const telefono = document.getElementById("telefono").value;
+
+    const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSd8AnMJ-vkyeM72q0-MSRvI1i0n9kejzV4RscgV_8ZivrZsUQ/formResponse";
+
+    const formData = new FormData();
+    formData.append("entry.112490138", nombre);
+    formData.append("entry.1904351407", email);
+    formData.append("entry.743259634", telefono);
+
+    fetch(formURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+    });
+
+    // Redirección a WhatsApp con nombre
+    setTimeout(() => {
+        window.location.href = `https://wa.me/34603157717?text=Hola%20soy%20${encodeURIComponent(nombre)}%20y%20quiero%20mi%20valoración`;
+    }, 500);
 });
 </script>
   
