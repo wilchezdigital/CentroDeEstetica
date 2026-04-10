@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -25,7 +26,9 @@
             <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80" alt="Bienestar en Mandalay" class="w-full h-full object-cover">
         </div>
         <div class="relative z-20 text-center px-4 max-w-4xl fade-in">
-            <img src="Logo-Mandalay.png" alt="Mandalay Logo" class="h-80 object-contain mb-8 justify-center drop-shadow-lg">
+            <div class="flex justify-center">
+              <img src="Logo-Mandalay-White.png" alt="Mandalay Logo" class="h-20 md:h-28 object-contain mb-8 drop-shadow-lg">
+            </div>
             <span class="text-white uppercase tracking-widest text-sm mb-4 block">Estética y bienestar integral en Lanzarote</span>
             <h1 class="text-5xl md:text-7xl text-white mb-6">Resultados notorios desde la primera sesión</h1>
             <p class="text-lg md:text-xl text-white/90 mb-8 font-light">Relaja tu cuerpo, alivia el dolor, mejora tu apariencia y vuelve a sentirte bien contigo desde el primer día.</p>
@@ -145,6 +148,26 @@
                 <button type="submit" class="w-full bg-stone-900 text-white py-4 rounded-full font-bold hover:bg-mandalay-gold transition-colors">QUIERO MI VALORACIÓN</button>
                 <p class="text-xs text-stone-400">Serás redirigido a WhatsApp para confirmar tu cita.</p>
             </form>
+          
+          <form id="mandalayForm"
+      action="https://docs.google.com/forms/d/e/1FAIpQLSd8AnMJ-vkyeM72q0-MSRvI1i0n9kejzV4RscgV_8ZivrZsUQ/formResponse"
+      method="POST"
+      target="hidden_iframe"
+      class="space-y-4 max-w-md mx-auto mb-8">
+
+    <!-- entry IDs del form -->
+    <input type="text" name="entry.112490138" placeholder="Nombre completo" required class="w-full px-6 py-4 rounded-full border-stone-200">
+    <input type="email" name="entry.1904351407" placeholder="Tu Email" required class="w-full px-6 py-4 rounded-full border-stone-200">
+    <input type="tel" name="entry.743259634" placeholder="Teléfono" required class="w-full px-6 py-4 rounded-full border-stone-200">
+
+    <button type="submit" class="w-full bg-stone-900 text-white py-4 rounded-full font-bold hover:bg-mandalay-gold transition-colors">
+        QUIERO MI VALORACIÓN
+    </button>
+
+    <p class="text-xs text-stone-400">Serás redirigido a WhatsApp para confirmar tu cita.</p>
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
             <a href="https://wa.me/34603157717?text=Hola%20quiero%20agendar%20mi%20valoración" class="inline-flex items-center gap-2 text-mandalay-gold font-bold">
                 O contacta directo por WhatsApp →
@@ -203,5 +226,15 @@
         <p class="mt-12 text-xs text-stone-400">© 2026 Mandalay Lanzarote. Todos los derechos reservados.</p>
     </footer>
 
+  <script>
+document.getElementById("mandalayForm").addEventListener("submit", function() {
+    
+    setTimeout(function() {
+        window.location.href = "https://wa.me/34603157717?text=Hola%20quiero%20agendar%20mi%20valoración";
+    }, 800);
+
+});
+</script>
+  
 </body>
 </html>
