@@ -224,8 +224,8 @@ document.getElementById("mandalayForm").addEventListener("submit", function(e) {
 
     const formData = new FormData();
     formData.append("entry.112490138", nombre);
-    formData.append("entry.1904351407", email);
-    formData.append("entry.743259634", telefono);
+    formData.append("entry.743259634", email);
+    formData.append("entry.1904351407", telefono);
 
     fetch(formURL, {
         method: "POST",
